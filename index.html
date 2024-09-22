@@ -51,10 +51,6 @@
   </div>
 
   <script>
-    function updateHomePage(url) {
-      document.getElementById('homepage').value = url;
-    }
-
     function setHomePage() {
       var homePageUrl = document.getElementById('homepage').value;
       alert('P&aacute;gina inicial configurada para: ' + homePageUrl);
@@ -69,7 +65,7 @@
       if (window.AppInventor) {
         var webViewString = AppInventor.getWebViewString();
         if (webViewString) {
-          updateHomePage(webViewString);
+          document.getElementById('homepage').value = webViewString;
         }
       }
     });
