@@ -48,6 +48,7 @@
     <input type="text" id="homepage" placeholder="Defina sua p&aacute;gina inicial">
     <br>
     <button onclick="setHomePage()">Salvar</button>
+    <p id="currentHome">Página inicial atual: <span id="homeValue"></span></p>
   </div>
 
   <script>
@@ -66,6 +67,7 @@
         var webViewString = AppInventor.getWebViewString();
         if (webViewString) {
           document.getElementById('homepage').value = webViewString;
+          document.getElementById('homeValue').textContent = webViewString; // Exibe a variável home
         }
       }
     });
