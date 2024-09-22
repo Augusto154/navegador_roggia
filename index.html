@@ -59,11 +59,12 @@
     // Fun&ccedil;&atilde;o para salvar a p&aacute;gina inicial e enviar de volta ao MIT App Inventor
     function setHomePage() {
       var homePageUrl = document.getElementById('homepage').value;
-      localStorage.setItem('homePage', homePageUrl);
       alert('P&aacute;gina inicial configurada para: ' + homePageUrl);
       
       // Envia o valor da p&aacute;gina inicial de volta ao MIT App Inventor
-      window.AppInventor.setWebViewString(homePageUrl);
+      if (window.AppInventor) {
+        window.AppInventor.setWebViewString(homePageUrl);
+      }
     }
 
     // Ao carregar a p&aacute;gina, recebe o valor da vari&aacute;vel 'home' do MIT App Inventor
