@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Configura&ccedil;&otilde;es - P&aacute;gina Inicial</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+    }
+    .container {
+      text-align: center;
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input[type="text"] {
+      padding: 10px;
+      width: 300px;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Configurar P&aacute;gina Inicial</h2>
+    <input type="text" id="homepage" placeholder="Defina sua p&aacute;gina inicial">
+    <br>
+    <button onclick="setHomePage()">Salvar</button>
+  </div>
+
+  <script>
+    // Fun&ccedil;&atilde;o para atualizar o campo com o valor da vari&aacute;vel 'home' do MIT App Inventor
+    function updateHomePage(url) {
+      document.getElementById('homepage').value = url;
+    }
+
+    // Fun&ccedil;&atilde;o para salvar a p&aacute;gina inicial e enviar de volta ao MIT App Inventor
+    function setHomePage() {
+      var homePageUrl = document.getElementById('homepage').value;
+      localStorage.setItem('homePage', homePageUrl);
+      alert('P&aacute;gina inicial configurada para: ' + homePageUrl);
+      
+      // Envia o valor da p&aacute;gina inicial de volta ao MIT App Inventor
+      window.AppInventor.setWebViewString(homePageUrl);
+    }
+
+    // Ao carregar a p&aacute;gina, recebe o valor da vari&aacute;vel 'home' do MIT App Inventor
+    document.addEventListener("DOMContentLoaded", function() {
+      // Verifica se o WebViewString foi enviado pelo MIT App Inventor
+      if (window.AppInventor) {
+        var webViewString = AppInventor.getWebViewString(); // Captura o valor enviado
+        if (webViewString) {
+          updateHomePage(webViewString); // Preenche o campo com o valor da vari&aacute;vel home
+        }
+      }
+    });
+  </script>
+</body>
+</html>
