@@ -63,8 +63,8 @@
       
       // Envia o valor da p&aacute;gina inicial de volta ao MIT App Inventor
       if (window.AppInventor) {
-        // Aqui você deve usar a função apropriada para definir a variável 'home'
-        window.AppInventor.setWebViewString(homePageUrl); // Certifique-se de que isso é a maneira correta de passar o valor
+        // Use a função correta para configurar a variável 'home'
+        window.AppInventor.setGlobalVariable('home', homePageUrl); // Ajuste conforme necessário
       }
     }
 
@@ -72,9 +72,9 @@
     document.addEventListener("DOMContentLoaded", function() {
       // Verifica se o WebViewString foi enviado pelo MIT App Inventor
       if (window.AppInventor) {
-        var webViewString = AppInventor.getWebViewString(); // Captura o valor enviado
-        if (webViewString) {
-          updateHomePage(webViewString); // Preenche o campo com o valor da vari&aacute;vel home
+        var homeUrl = AppInventor.getGlobalVariable('home'); // Captura o valor enviado
+        if (homeUrl) {
+          updateHomePage(homeUrl); // Preenche o campo com o valor da vari&aacute;vel home
         }
       }
     });
